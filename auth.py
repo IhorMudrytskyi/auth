@@ -70,3 +70,5 @@ with tab[2]:
             st.text(f"Пароль: {zab_result[1]}")
         else:
             st.warning("Користувача з такими даними не знайдено!")
+cursor.close()
+connection.close()

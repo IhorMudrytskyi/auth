@@ -24,12 +24,12 @@ with tab[0]:
         if auth_result:
             st.success("Ви успішно авторизувались!")
             st.header("Дані користувача:")
-            cursor.execute("select first_name, last_name, phone_number, email from user_info join(select login, password from auth where login = %s and password = %s) on user_info.id = auth.id;",(auth_login, auth_password))
+            cursor.execute("select id, first_name, last_name, phone_number, email from user_info join(select id, login, password from auth where login = %s and password = %s) on user_info.id = auth.id;",(auth_login, auth_password))
             info_result = cursor.fetchone()
-            st.text(f"Ваше ім'я: {info_result[0]}")
-            st.text(f"Ваше прізвище: {info_result[1]}")
-            st.text(f"Ваш номер телефону: {info_result[2]}")
-            st.text(f"Ваша електронна пошта: {info_result[3]}")
+            st.text(f"Ваше ім'я: {info_result[1]}")
+            st.text(f"Ваше прізвище: {info_result[2]}")
+            st.text(f"Ваш номер телефону: {info_result[3]}")
+            st.text(f"Ваша електронна пошта: {info_result[4]}")
         else:
             st.warning("Логін чи пароль невірний!")
 

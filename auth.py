@@ -62,7 +62,7 @@ with tab[2]:
     zab_phone_number = st.text_input("Номер телефону  ").replace(" ", "")
     zab_email = st.text_input("Електронна пошта  ").replace(" ", "")
     if st.button("Нагадати"):
-        cursor.execute("select login, password from auth join(select first_name, last_name, phone_number, email from user_info where first_name = %s and last_name = %s and phone_number = %s and email = %s) on auth.id = user_info.id;",(zab_first_name, zab_last_name, zab_phone_number, zab_email))
+        cursor.execute("select auth.login, auth.password from auth join user_info on auth.id = user_info.id where user_info.first_name = %s and user_info.last_name = %s and user_info.phone_number = %s and user_info.email = %s;",(zab_first_name, zab_last_name, zab_phone_number, zab_email))
         zab_result = cursor.fetchone()
         if zab_result:
             st.header("Дані для авторизації:")

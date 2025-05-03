@@ -24,7 +24,7 @@ with tab[0]:
         if auth_result:
             st.success("Ви успішно авторизувались!")
             st.header("Дані користувача:")
-            cursor.execute("select id, first_name, last_name, phone_number, email from user_info join(select id, login, password from auth where login = %s and password = %s) on user_info.id = auth.id;",(auth_login, auth_password))
+            cursor.execute("select  user_info.first_name,  user_info.last_name,  user_info.phone_number,  user_info.email from user_info join auth on user_info.id = auth.id where auth.login = %s and auth.password = %s;",(auth_login, auth_password))
             info_result = cursor.fetchone()
             st.text(f"Ваше ім'я: {info_result[1]}")
             st.text(f"Ваше прізвище: {info_result[2]}")

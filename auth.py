@@ -26,10 +26,10 @@ with tab[0]:
             st.header("Дані користувача:")
             cursor.execute("select  user_info.first_name,  user_info.last_name,  user_info.phone_number,  user_info.email from user_info join auth on user_info.id = auth.id where auth.login = %s and auth.password = %s;",(auth_login, auth_password))
             info_result = cursor.fetchone()
-            st.text(f"Ваше ім'я: {info_result[1]}")
-            st.text(f"Ваше прізвище: {info_result[2]}")
-            st.text(f"Ваш номер телефону: {info_result[3]}")
-            st.text(f"Ваша електронна пошта: {info_result[4]}")
+            st.text(f"Ваше ім'я: {info_result[0]}")
+            st.text(f"Ваше прізвище: {info_result[1]}")
+            st.text(f"Ваш номер телефону: {info_result[2]}")
+            st.text(f"Ваша електронна пошта: {info_result[3]}")
         else:
             st.warning("Логін чи пароль невірний!")
 

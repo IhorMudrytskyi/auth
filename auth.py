@@ -22,7 +22,7 @@ with tab[0]:
         result = cursor.fetchone()
         if result:
             st.success("Вхід успішний")
-            cursor.execute("select * from user_info join auth on user_info.id = auth.id where auth_login = %s and auth_password = %s", (auth_login,)
+            cursor.execute("select * from user_info join auth on user_info.id = auth.id where auth_login = %s and auth_password = %s;", (auth_login,))
             info_result = cursor.fetchone()
             st.header("Дані користувача: ")
             st.text(f"Ім'я: {info_result[1]}")
